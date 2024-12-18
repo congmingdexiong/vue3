@@ -1,27 +1,46 @@
 ﻿<template>
   <div class="person">
-    <h2>姓名：{{ name }}</h2>
-    <h2>年龄：{{ age }}</h2>
-    <button @click="changeName">修改名字</button>
-    <button @click="changeAge">修改年龄</button>
-    <button @click="showTel">查看联系方式</button>
+    <h2>一辆{{ car.brand }} 车，价值{{ car.price }}</h2>
+    <button @click="changePrice">修改汽车价格</button>
+    <ul>
+      <li v-for="g in games" :key="g.id">{{ g.name }}</li>
+    </ul>
+    <button @click="changeFirstGame">修改第一个游戏名字</button>
+    <h2>测试 : {{ obj.a.b.c }}</h2>
+    <button @click="changeObj">修改第一个游戏名字</button>
   </div>
 </template>
 
 <script setup lang="ts" name="Person">
-import { ref } from 'vue'
-const name = ref('张三')
-const age = ref(19)
-const tel = '138888888'
+import { reactive } from 'vue'
+const car = reactive({
+  brand: '奔驰',
+  price: 100,
+})
 
-function changeName() {
-  name.value = 'zhang-san'
+const games = reactive([
+  { id: 'ayxxxdd1', name: '王者荣耀' },
+  { id: 'ayxxxdd2', name: '原神' },
+  { id: 'ayxxxdd4', name: '三国志' },
+])
+
+const obj = reactive({
+  a: {
+    b: {
+      c: 666,
+    },
+  },
+})
+
+function changePrice() {
+  car.price += 10
 }
-function changeAge() {
-  age.value += 1
+
+function changeFirstGame() {
+  games[0].name = '流星蝴蝶剑'
 }
-function showTel() {
-  alert(tel)
+function changeObj() {
+  obj.a.b.c = '777'
 }
 </script>
 
@@ -34,5 +53,9 @@ function showTel() {
 }
 button {
   margin: 0 5px;
+}
+
+li {
+  font-size: 20px;
 }
 </style>
