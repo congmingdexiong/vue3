@@ -8,28 +8,20 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Person',
-  data() {
-    return {
-      name: '张三',
-      age: 18,
-      tel: '138888888',
-    }
-  },
-  methods: {
-    changeName() {
-      this.name = 'zhang-san'
-    },
-    changeAge() {
-      this.age += 1
-    },
-    showTel() {
-      alert(this.tel)
-    },
-  },
+<script setup lang="ts" name="Person">
+import { ref } from 'vue'
+const name = ref('张三')
+const age = ref(19)
+const tel = '138888888'
+
+function changeName() {
+  name.value = 'zhang-san'
+}
+function changeAge() {
+  age.value += 1
+}
+function showTel() {
+  alert(tel)
 }
 </script>
 
