@@ -35,21 +35,9 @@ function changeCar() {
   person.car = { c1: '特斯拉', c2: '丰田' }
 }
 
-//情况四 监视响应式对象中的某个属性，且该属性是基本类型，要写成函数式
+//情况五，监视上述多个属性
 watch(
-  () => {
-    return person.name
-  },
-  (newValue, oldValue) => {
-    console.log('person changed')
-    console.log(newValue)
-    console.log(oldValue)
-  },
-)
-
-//监视对象某个属性并且整个person变了也会被监视
-watch(
-  () => person.car,
+  [() => person.name, () => person.car.c1],
   (newValue, oldValue) => {
     console.log('person changed')
     console.log(newValue)
