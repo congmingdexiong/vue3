@@ -10,7 +10,11 @@
 </template>
 
 <script setup lang="ts" name="News">
-  
+import { onUnmounted } from 'vue'
+
+onUnmounted(() => {
+  console.log('News组件卸载了')
+})
 </script>
 
 <style scoped>
@@ -26,11 +30,11 @@
   list-style: none;
   padding-left: 10px;
 }
-.news li>a {
+.news li > a {
   font-size: 18px;
   line-height: 40px;
   text-decoration: none;
-  color: #64967E;
+  color: #64967e;
   text-shadow: 0 0 1px rgb(0, 84, 0);
 }
 .news-content {
