@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts" name="Father">
-import { log } from 'console'
 import Child1 from './Child1.vue'
 import Child2 from './Child2.vue'
 import { ref, reactive } from 'vue'
@@ -30,6 +29,15 @@ const c2 = ref()
 	console.log(obj.b)
 	console.log(obj.c)
 	console.log(x) */
+
+console.log(
+  reactive({
+    a: 1,
+    b: 2,
+    c: ref(3),
+  }),
+)
+console.log(c1)
 
 // 数据
 const house = ref(4)
